@@ -7,4 +7,6 @@ Rails.application.routes.draw do
       resources :games, only: [:index, :create]
     end
   end
+
+  get '/', to: redirect('/index.html')
 end
