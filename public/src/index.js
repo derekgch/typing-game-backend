@@ -204,6 +204,7 @@ document.addEventListener("DOMContentLoaded", function() {
     inputForm.style.height = "100px";
     inputForm.style.fontSize = "20px";
     inputForm.id = "inputTxt";
+    inputForm.onpaste = "return false";
     container.appendChild(inputForm);
     if (logInNameSpace === "Log In!") {
       inputForm.disabled = true;
@@ -424,8 +425,8 @@ document.addEventListener("DOMContentLoaded", function() {
     let text = oneStepAtTheTime[Math.floor(Math.random()*oneStepAtTheTime.length)];
     let pTag = document.createElement('p');
     let scrollerDiv = document.createElement('div');
-    scrollerDiv.style.backgroundColor= bg
-
+    scrollerDiv.style.backgroundColor= bg;
+    scrollerDiv.style.outline =0;
     scrollerDiv.id = "scroller";
     pTag.id = "tag";
 
