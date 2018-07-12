@@ -193,10 +193,7 @@ document.addEventListener("DOMContentLoaded", function() {
     clockDiv.innerText = timerCount;
     clockContainer.prepend(clockDiv);
   }
-  function handlePaste(event){
-    event.preventDefault();
-    return false;
-  }
+ 
 
   //displays text for user to type
   function displayText() {
@@ -208,7 +205,9 @@ document.addEventListener("DOMContentLoaded", function() {
     inputForm.style.height = "100px";
     inputForm.style.fontSize = "20px";
     inputForm.id = "inputTxt";
-    inputForm.onpaste = handlePaste;
+    inputForm.onpaste = function(e) {
+      e.preventDefault();
+    };
     container.appendChild(inputForm);
     if (logInNameSpace === "Log In!") {
       inputForm.disabled = true;
