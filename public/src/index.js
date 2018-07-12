@@ -341,7 +341,7 @@ document.addEventListener("DOMContentLoaded", function() {
       body: JSON.stringify({accuracy: typingAccuracy, wpm: wordsPerMin, user_id: user.id})
     }
 
-    fetch('http://0.0.0.0:3000/api/v1/games', config)
+    fetch(GAMES_URL, config)
   }
 
   //sound effect of the typewriter in the background
