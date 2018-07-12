@@ -426,6 +426,9 @@ document.addEventListener("DOMContentLoaded", function() {
     let scrollerDiv = document.createElement('div');
     scrollerDiv.style.backgroundColor= bg;
     scrollerDiv.style.outline =0;
+    scrollerDiv.oncopy = function(e) {
+      e.preventDefault();
+    };
     scrollerDiv.id = "scroller";
     pTag.id = "tag";
 
