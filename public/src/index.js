@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
-  const GAMES_URL = 'http://localhost:3000/api/v1/games'
-  const USERS_URL = 'http://localhost:3000/api/v1/users'
+  const GAMES_URL = 'https://hidden-woodland-52554.herokuapp.com/api/v1/games'
+  const USERS_URL = 'https://hidden-woodland-52554.herokuapp.com/api/v1/users'
   const modalDiv = document.getElementById('modal-div')
   let logInNameSpace = "Log In!";
   let mySound;
