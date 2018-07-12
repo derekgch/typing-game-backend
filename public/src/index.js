@@ -193,6 +193,10 @@ document.addEventListener("DOMContentLoaded", function() {
     clockDiv.innerText = timerCount;
     clockContainer.prepend(clockDiv);
   }
+  function handlePaste(event){
+    event.preventDefault();
+    return false;
+  }
 
   //displays text for user to type
   function displayText() {
@@ -204,7 +208,7 @@ document.addEventListener("DOMContentLoaded", function() {
     inputForm.style.height = "100px";
     inputForm.style.fontSize = "20px";
     inputForm.id = "inputTxt";
-    inputForm.onpaste = "return false";
+    inputForm.onpaste = handlePaste;
     container.appendChild(inputForm);
     if (logInNameSpace === "Log In!") {
       inputForm.disabled = true;
@@ -364,9 +368,6 @@ document.addEventListener("DOMContentLoaded", function() {
   getModal();
 
 
-
-
-
   ///////////////////////////////
 
 //how our scrolling functions work with where it begins and how it is able to move across the screen
@@ -417,7 +418,6 @@ document.addEventListener("DOMContentLoaded", function() {
       for (i=0;i<ss.length;i++) {sText+=ss[i].nodeValue+" "};
       typingInterval();
     }
-
   }
 
 
