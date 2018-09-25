@@ -2,8 +2,9 @@ document.addEventListener("DOMContentLoaded", function() {
   const GAMES_URL = 'https://hidden-woodland-52554.herokuapp.com/api/v1/games'
   const USERS_URL = 'https://hidden-woodland-52554.herokuapp.com/api/v1/users'
   const modalDiv = document.getElementById('modal-div')
-  let logInNameSpace = "Log In!";
-  let mySound;
+  let logInNameSpace = "Guest";
+  let mySound = new sound("sounds/tw_sound.mp3");
+   
   const bg = "rgb(246, 246, 246)";
 
   const oneStepAtTheTime = [
@@ -91,7 +92,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
   //saving the score of the completed game
   function userPostRequest(e) {
-    let nameInput = document.getElementById('name-input-field').value
+    let nameInputField = document.getElementById('name-input-field');
+    let nameInput;
+    if(nameInputField) nameInput=nameInputField.value;
+    else nameInput="guest";
+    console.log(nameInput);
 
     let config = {
       method: "POST",
@@ -101,11 +106,11 @@ document.addEventListener("DOMContentLoaded", function() {
     fetch(USERS_URL, config).then(resp=>resp.json()).then(data => user = data).then(pageSetUp)
     // console.log(userFlag)
     // console.log(logInNameSpace)
-    if (userFlag === true) {
-      logInNameSpace = "Change User";
-      userFlag = false;
-      getModal();
-    }
+    // if (userFlag === true) {
+      logInNameSpace = nameInput;
+      // userFlag = false;
+      // getModal();
+    // }
   }
 
   //in order to reset what we have displaying on the page to make sure they are removed and reset for a "new" game look
@@ -120,7 +125,6 @@ document.addEventListener("DOMContentLoaded", function() {
     flag = true;
     counterKeystroke = 0;
     correctStrokeCnt = 0;
-    mySound = new sound("sounds/tw_sound.mp3");
 
     displayClock();
     initScroller();
@@ -328,7 +332,7 @@ document.addEventListener("DOMContentLoaded", function() {
       // console.log(wordArray);
     }
     disableInterval();
-    mySound.stop();
+    // mySound.stop();
   }
 
   //notify user game has ended with their wpm/accuracy/score as well as saving it to our backend 
@@ -364,10 +368,14 @@ document.addEventListener("DOMContentLoaded", function() {
         this.sound.pause();
     }
   }
-  pageSetUp();
-  getModal();
 
 
+
+
+
+
+  ///////////////////////////////
+  //movement functions;
   ///////////////////////////////
 
 //how our scrolling functions work with where it begins and how it is able to move across the screen
@@ -385,7 +393,10 @@ document.addEventListener("DOMContentLoaded", function() {
       else{stopScroller(); startOrStop = true;}
   }
 
-  function stopScroller(){clearTimeout(scroll)}
+  function stopScroller(){
+    mySound.stop();
+    clearTimeout(scroll);
+  }
 
   function startScroller(){
     let tagEle = document.getElementById('tag')
@@ -447,4 +458,11 @@ document.addEventListener("DOMContentLoaded", function() {
     scrollerDiv.appendChild(pTag);
     container.appendChild(scrollerDiv);
   }
+
+
+
+  userPostRequest();
+  // pageSetUp();
+  getModal();
+
 })
