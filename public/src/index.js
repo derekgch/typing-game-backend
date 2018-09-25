@@ -92,10 +92,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
   //saving the score of the completed game
   function userPostRequest(e) {
+    let time = new Date();
     let nameInputField = document.getElementById('name-input-field');
     let nameInput;
     if(nameInputField) nameInput=nameInputField.value;
-    else nameInput="guest";
+    else nameInput=`Guest${time.getHours()}${time.getMinutes()}`;
     console.log(nameInput);
 
     let config = {
