@@ -208,14 +208,15 @@ document.addEventListener("DOMContentLoaded", function() {
     inputForm.onpaste = function(e) {
       e.preventDefault();
     };
+    inputForm.placeholder = "Start typing here!"
+
     container.appendChild(inputForm);
-    if (logInNameSpace === "Log In!") {
-      inputForm.disabled = true;
-      inputForm.placeholder = "Please log in."
-    } else {
-      inputForm.disabled = false;
-      inputForm.placeholder = "Start typing here!"
-    }
+    // if (logInNameSpace === "Log In!") {
+    //   inputForm.disabled = true;
+    //   inputForm.placeholder = "Please log in."
+    // } else {
+      // inputForm.disabled = false;
+    // }
 
     let displayAcc = document.createElement("div");
     displayAcc.id = "display-accuracy";
