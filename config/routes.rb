@@ -8,5 +8,5 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/', to: redirect('/index.html')
+  get '/', to: redirect('/main.html')
 end
